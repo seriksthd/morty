@@ -1,5 +1,4 @@
 import { createBrowserRouter, Link, RouterProvider } from "react-router-dom";
-import TourInfo from "../pages/TourInfo";
 import AdminPage from "../pages/AdminPage";
 import UserPage from "../pages/UserPage";
 import { RegistterPage } from "../pages/RegistterPage";
@@ -10,17 +9,14 @@ import { PrivateRoute } from "./PrivateRoute";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { isAuth } from "../store/slices/authSlice";
+import MortyInfo from "../pages/MortyInfo";
 
 export const AppRoutes = () => {
   const [state, setState] = useState("");
   const dispatch = useDispatch();
-
   const { role } = useSelector((state) => state.auth);
-  console.log(role);
-
   useEffect(() => {
     const { data } = JSON.parse(localStorage.getItem("auth")) || {};
-
     setState(data?.role);
     dispatch(isAuth(state));
   }, [dispatch, state]);
@@ -41,10 +37,10 @@ export const AppRoutes = () => {
           ),
         },
         {
-          path: "/tourInfo/:tourInfoId",
+          path: "/mortyInfo/:mortyInfoId",
           element: (
             <PrivateRoute
-              Component={<TourInfo />}
+              Component={<MortyInfo />}
               fallBackPath="/login"
               isAllowed={!role}
             />
@@ -62,7 +58,7 @@ export const AppRoutes = () => {
           ),
         },
       ],
-    },    
+    },
 
     {
       path: "/admin",

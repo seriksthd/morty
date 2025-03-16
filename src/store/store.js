@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { tourReducer } from "./slices/tour-slice";
+import { mortyReducer } from "./slices/mortySlice";
 import { authSlice } from "./slices/authSlice";
 
 export const store = configureStore({
   reducer: {
-    tours: tourReducer,
+    morty: mortyReducer,
     auth: authSlice.reducer,
   },
 });

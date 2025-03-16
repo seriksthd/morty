@@ -1,10 +1,10 @@
 import React from "react";
-import { TourList } from "../components/TourList";
+import { MortyList } from "../components/MortyList";
 
 export const MainPage = () => {
   return (
     <div>
-      <TourList/>
+      <MortyList />
     </div>
   );
 };
